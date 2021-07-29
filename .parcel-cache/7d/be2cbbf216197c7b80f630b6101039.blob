@@ -1,0 +1,23 @@
+let $16b5ad875ae907e2f7f79e7b8fe116cc$var$html = document.querySelector('#html');
+let $16b5ad875ae907e2f7f79e7b8fe116cc$var$style = document.querySelector('#style');
+let $16b5ad875ae907e2f7f79e7b8fe116cc$var$string = `/*你好，我是一名前端新人\n接下我要展示前端功底了\n首先要准备一个div*/\n#div1{\n    border:1px solid red;\n    width:200px;\n    height:200px;\n}\n/* 接下来我吧div变成一个八卦图\n * 注意看好了\n *首先，把 div 变成一个圆\n*/\n#div1{\n    border-radius:50%;\n    box-shadow:0 0 3px rgba(0,0,0,0.5);\n    border:none;\n}\n/*八卦是阴阳形成的\n *一黑一白\n*/\n#div1{\n    background: linear-gradient(90deg, rgba(255,255,255,1) \n    0%, rgba(255,255,255,1) 50%, rgba(0,\n    0,0,1) 50%, rgba(0,0,0,1) 100%);\n}\n/*阴阳鱼*/\n#div1::before {\n    width:100px;\n    height:100px;\n    \n    top:0;\n    left:50%;\n    transform: translateX(-50%);\n    background:#000;\n    border-radius:50%;\n    background: radial-gradient(circle, \n        rgba(255,255,255,1) 0%, rgba(255,255,255,1) \n        25%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 100%);\n  }\n#div1::after {\n    width:100px;\n    height:100px;\n    bottom:0;\n    left:50%;\n    transform: translateX(-50%);\n    background:#fff;\n    border-radius:50%;\n    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 0%, \n    rgba(0,0,0,1) 25%, rgba(249,249,249,1) 25%, \n    rgba(255,255,255,1) 100%);\n  }\n`;
+let $16b5ad875ae907e2f7f79e7b8fe116cc$var$string2 = "";
+let $16b5ad875ae907e2f7f79e7b8fe116cc$var$n = 0;
+let $16b5ad875ae907e2f7f79e7b8fe116cc$var$step = ()=>{
+    setTimeout(()=>{
+        $16b5ad875ae907e2f7f79e7b8fe116cc$var$string[$16b5ad875ae907e2f7f79e7b8fe116cc$var$n] === '\n' ? $16b5ad875ae907e2f7f79e7b8fe116cc$var$string2 += '<br>' : $16b5ad875ae907e2f7f79e7b8fe116cc$var$string[$16b5ad875ae907e2f7f79e7b8fe116cc$var$n] === ' ' ? $16b5ad875ae907e2f7f79e7b8fe116cc$var$string2 += '&nbsp' : $16b5ad875ae907e2f7f79e7b8fe116cc$var$string2 += $16b5ad875ae907e2f7f79e7b8fe116cc$var$string[$16b5ad875ae907e2f7f79e7b8fe116cc$var$n];
+        //    string2 += string[n] === '\n' ? '<br>': string[n];//不是回车就继续搬，是的话就加<br>换行
+        $16b5ad875ae907e2f7f79e7b8fe116cc$var$html.innerHTML = $16b5ad875ae907e2f7f79e7b8fe116cc$var$string2;
+        $16b5ad875ae907e2f7f79e7b8fe116cc$var$style.innerHTML = $16b5ad875ae907e2f7f79e7b8fe116cc$var$string.substring(0, $16b5ad875ae907e2f7f79e7b8fe116cc$var$n);
+        if ($16b5ad875ae907e2f7f79e7b8fe116cc$var$n < $16b5ad875ae907e2f7f79e7b8fe116cc$var$string.length - 1) {
+            $16b5ad875ae907e2f7f79e7b8fe116cc$var$n += 1;
+            window.scroll(0, 99999);
+            $16b5ad875ae907e2f7f79e7b8fe116cc$var$html.scroll(0, 99999);
+            $16b5ad875ae907e2f7f79e7b8fe116cc$var$step(); //循环延时的关键
+        }
+    }, 20);
+};
+$16b5ad875ae907e2f7f79e7b8fe116cc$var$step(); // setInterval(()=>{
+ //     n = n+1
+ //     demo.innerHTML = n;
+ // }, 1000);
